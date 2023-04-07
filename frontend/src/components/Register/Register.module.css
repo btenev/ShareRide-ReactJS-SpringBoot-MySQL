@@ -1,0 +1,141 @@
+/* Register container */
+.register {
+    border: solid 2px grey;
+    border-radius: 16px;
+    width: 80%;
+    overflow: hidden;
+    margin: 0px auto 20px;
+    height: 120vh;
+    position: relative;
+    z-index: -1;
+    /* background-image: url("../images/register-main-01.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover; */
+}
+
+.register .register__image {
+
+    /* object-fit: cover; */
+    width: 100%;
+    height: 100%;
+}
+
+.register .register__input {
+    display: flex;
+    height: 90%;
+    position: absolute;
+    width: calc(100% - 60px);
+    top: 30px;
+    left: 30px;
+}
+
+.register__input .input {
+    display: grid;
+    width: 100%;
+    justify-items: center;
+    align-items: center;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: repeat(9, auto);
+}
+
+.input .input__fields label {
+    display: block;
+    margin-bottom: 4px;
+}
+
+.input .input__fields input {
+    display: block;
+    border-radius: 12px;
+    width: 300px;
+}
+
+.input .input__fields select {
+    display: block;
+    width: 300px;
+    border-radius: 12px;
+    height: 29.2px;
+    background-color: white;
+}
+
+.box1 {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.box2 {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.box3 {
+    grid-column: 1;
+    grid-row: 2;
+}
+
+.box4 {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+.box5 {
+    grid-column: 1;
+    grid-row: 3;
+}
+
+.box6 {
+    grid-column: 2;
+    grid-row: 3;
+}
+
+.box7 {
+    grid-column: 1;
+    grid-row: 4;
+}
+
+.box8 {
+    grid-column: 2;
+    grid-row: 4;
+}
+
+.box9 {
+    grid-column: 1;
+    grid-row: 5;
+}
+
+.box10 {
+    grid-column: 2;
+    grid-row: 5;
+}
+
+.box11 {
+    grid-column: 1;
+    grid-row: 6;
+}
+
+.box12 {
+    grid-column: 2;
+    grid-row: 6;
+}
+
+.box13 {
+    grid-column: 2;
+    grid-row: 7;
+}
+
+.box14 {
+    grid-column: 2;
+    grid-row: 8;
+}
+
+.box15 {
+    grid-column: 1/3;
+    grid-row: 9;
+}
+
+.input .input__fields button {
+    width: 150px;
+    border-radius: 12px;
+    height: 29.2px;
+    background-color: white;
+}

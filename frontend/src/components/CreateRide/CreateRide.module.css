@@ -1,0 +1,132 @@
+/* Main */
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 80%;
+    margin: 0 auto;
+}
+
+/* Travel directions */
+
+.travel-directions {
+    border: solid 2px grey;
+    border-radius: 16px;
+    overflow: hidden;
+    padding: 4px 6px;
+    width: 60%;
+}
+
+.travel-directions .input__fields label {
+    text-align: center;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.travel-directions .input__fields input {
+    display: block;
+    border-radius: 12px;
+    width: 300px;
+    margin: auto;
+    margin-bottom: 10px;
+}
+
+.travel-directions button {
+    margin: auto;
+    display: block;
+}
+
+/* Google map */
+
+.googleMap {
+    min-height: 500px;
+    width: 90%;
+    border: solid 2px grey;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+/* Travel details */
+.travel-details {
+    width: 90%;
+    border: solid 2px grey;
+    border-radius: 16px;
+    padding: 8px 10px;
+    margin-bottom: 20px;
+}
+
+.travel-details .date-time {
+    display: flex;
+    flex-wrap: wrap;
+    border-bottom: solid 2px grey;
+    padding-bottom: 25px;
+}
+
+.travel-details .date-time p {
+    flex: 1;
+}
+
+.travel-details .date-time .collection-input {
+    display: flex;
+    flex-wrap: wrap;
+    flex: 2;
+    column-gap: 45px;
+    row-gap: 25px;
+}
+
+.travel-details .collection-input .input__fields label {
+    display: block;
+    margin-bottom: 4px;
+}
+
+.travel-details .collection-input .input__fields input {
+    border-radius: 12px;
+    width: 300px;
+    padding: 4px 6px;
+    height: 29.2px;
+}
+
+/* More details */
+
+.more-details {
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 10px;
+}
+
+.travel-details .more-details p {
+    flex: 1;
+}
+
+.travel-details .more-details .collection-input {
+    display: flex;
+    flex-wrap: wrap;
+    flex: 2;
+    padding: 4px 6px;
+    row-gap: 25px;
+    column-gap: 45px;
+}
+
+.travel-details .collection-input select {
+    border-radius: 12px;
+    width: 300px;
+    height: 29.2px;
+    background-color: white;
+    padding: 4px 6px;
+}
+
+.travel-details .more-details .collection-input input {
+    width: 650px;
+}
+
+.travel-details .more-details .collection-input textarea {
+    width: 650px;
+    height: 200px;
+    margin-bottom: 15px;
+}
+
+.travel-details button {
+    display: block;
+    margin: 0 auto;
+}

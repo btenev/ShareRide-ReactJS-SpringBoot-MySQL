@@ -1,0 +1,37 @@
+/* Footer */
+
+.footer {
+    background-color: brown;
+}
+
+.footer .footer__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    border-bottom: solid 2px black;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.footer .footer__list li{
+    padding: 12px 0px;
+}
+
+.footer p {
+    text-align: center;
+    padding: 12px 0px;
+    color: white;
+}
+
+/* *** */
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+.nav__item a:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 3px;
+}

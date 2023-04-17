@@ -1,60 +1,37 @@
-package com.bgtenev.backend.model.entity;
+package com.bgtenev.backend.model.dto.user;
 
 import com.bgtenev.backend.model.enums.*;
-import jakarta.persistence.*;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
-@Entity
-@Table(name = "users")
-public class UserEntity extends BaseEntity{
-    @Column(nullable = false)
+public class UserDetailsDto {
     private String email;
 
-    @Column(nullable = false)
     private String firstName;
 
-    @Column(nullable = false)
     private String lastName;
 
-    @Column(nullable = false, name = "birth_date")
-    private LocalDate birthDate;
-    @Column(nullable = false)
-    @Enumerated(EnumType.STRING)
+    private LocalDate birthdate;
+
     private GenderEnum gender;
 
-    @Column(nullable = false)
     private String password;
 
-    @Column(nullable = false)
+    private LanguageEnum language;
+
     private String phoneNumber;
 
-    @Column(nullable = false)
-    @Enumerated(EnumType.STRING)
-    private LanguageEnum language;
-    @Column(nullable = false)
-    @Enumerated(EnumType.STRING)
     private CommunicationEnum communication;
-    @Column(nullable = false)
-    @Enumerated(EnumType.STRING)
+
     private MusicEnum music;
-    @Column(nullable = false)
-    @Enumerated(EnumType.STRING)
+
     private PetEnum pet;
-    @Column(nullable = false)
-    @Enumerated(EnumType.STRING)
+
     private SmokingEnum smoking;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "address_id", referencedColumnName = "id")
-    private AddressEntity address;
+    private AddressDto address;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    private List<RoleEntity> roles = new ArrayList<>();
-
-    public UserEntity() {
+    public UserDetailsDto() {
     }
 
     public String getEmail() {
@@ -81,12 +58,12 @@ public class UserEntity extends BaseEntity{
         this.lastName = lastName;
     }
 
-    public LocalDate getBirthDate() {
-        return birthDate;
+    public LocalDate getBirthdate() {
+        return birthdate;
     }
 
-    public void setBirthDate(LocalDate birthDate) {
-        this.birthDate = birthDate;
+    public void setBirthdate(LocalDate birthdate) {
+        this.birthdate = birthdate;
     }
 
     public GenderEnum getGender() {
@@ -105,20 +82,20 @@ public class UserEntity extends BaseEntity{
         this.password = password;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
     public LanguageEnum getLanguage() {
         return language;
     }
 
     public void setLanguage(LanguageEnum language) {
         this.language = language;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public CommunicationEnum getCommunication() {
@@ -153,19 +130,11 @@ public class UserEntity extends BaseEntity{
         this.smoking = smoking;
     }
 
-    public AddressEntity getAddress() {
+    public AddressDto getAddress() {
         return address;
     }
 
-    public void setAddress(AddressEntity address) {
+    public void setAddress(AddressDto address) {
         this.address = address;
-    }
-
-    public List<RoleEntity> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(List<RoleEntity> roles) {
-        this.roles = roles;
     }
 }

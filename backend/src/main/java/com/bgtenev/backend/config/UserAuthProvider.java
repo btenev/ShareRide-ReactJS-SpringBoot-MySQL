@@ -4,7 +4,7 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.DecodedJWT;
-import com.bgtenev.backend.model.dto.UserDto;
+import com.bgtenev.backend.model.dto.user.UserDto;
 import com.bgtenev.backend.service.UserService;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Value;
@@ -51,7 +51,7 @@ public class UserAuthProvider {
 
         UserDto user = userService.findByEmail(decoded.getIssuer());
 
-        return new UsernamePasswordAuthenticationToken(user, null, Collections.emptyList());
+        return new UsernamePasswordAuthenticationToken(user.getEmail(), null, Collections.emptyList());
     }
 
 

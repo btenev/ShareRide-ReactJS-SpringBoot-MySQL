@@ -1,9 +1,9 @@
 package com.bgtenev.backend.service;
 
-import com.bgtenev.backend.model.dto.CredentialsDto;
+import com.bgtenev.backend.model.dto.user.CredentialsDto;
 import com.bgtenev.backend.exception.AppException;
-import com.bgtenev.backend.model.dto.UserDto;
-import com.bgtenev.backend.model.dto.UserRegisterDto;
+import com.bgtenev.backend.model.dto.user.UserDto;
+import com.bgtenev.backend.model.dto.user.UserRegisterDto;
 import com.bgtenev.backend.model.entity.RoleEntity;
 import com.bgtenev.backend.model.entity.UserEntity;
 import com.bgtenev.backend.model.enums.RoleEnum;
@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 
 import java.nio.CharBuffer;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService {
@@ -50,13 +51,21 @@ public class UserService {
         throw new AppException("Invalid password", HttpStatus.BAD_REQUEST);
     }
 
-    public void register(UserRegisterDto userRegisterDto) {
+    public UserDto register(UserRegisterDto userRegisterDto) {
+        Optional<UserEntity> optionalUser  = this.userRepository.findByEmail(userRegisterDto.getEmail());
+
+        if (optionalUser.isPresent()) {
+            throw new AppException("User with this email already exist!", HttpStatus.BAD_REQUEST);
+        }
+
         UserEntity newUser = this.userMapper.userRegisterDtoToUserEntity(userRegisterDto);
-        newUser.setPassword(this.passwordEncoder.encode(userRegisterDto.getPassword()));
+        newUser.setPassword(this.passwordEncoder.encode(CharBuffer.wrap(userRegisterDto.getPassword())));
 
         RoleEntity userRole = this.roleRepository.findByUserRole(RoleEnum.USER);
         newUser.setRoles(List.of(userRole));
 
         this.userRepository.save(newUser);
+
+        return this.userMapper.userEntityToUserDto(newUser);
     }
 }

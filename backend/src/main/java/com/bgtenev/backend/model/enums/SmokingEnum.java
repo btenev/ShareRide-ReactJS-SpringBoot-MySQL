@@ -1,6 +1,7 @@
 package com.bgtenev.backend.model.enums;
 
 public enum SmokingEnum {
+    NONE(""),
     SMOKER("I'm fine with smoking"),
     NONSMOKER("Please, no smoking in the car");
     private final String message;

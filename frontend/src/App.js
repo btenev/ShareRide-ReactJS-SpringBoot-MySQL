@@ -6,6 +6,7 @@ import { useState } from 'react';
 
 import { AuthContext } from './context/AuthContext';
 import * as authServices from './services/authService';
+import * as rideServices from './services/rideService';
 
 import { Header } from './components/Header/Header';
 import { Footer } from './components/Footer/Footer';
@@ -18,7 +19,7 @@ import { SearchRide } from './components/SearchRide/SearchRide';
 function App() {
     const navigate = useNavigate();
     const [auth, setAuth] = useState({});
-    const [errors, setErrors] = useState({});
+    const [errors, setErrors] = useState([]);
 
     const onLoginSubmit = async (data) => {
         try {
@@ -28,13 +29,57 @@ function App() {
 
             navigate('/');
         } catch (err) {
-            console.log(err.message);
+
             setErrors(err.message);
         }
     }
 
-    const context = {
+    const onRegisterSubmit = async (data) => {
+        const { country, city, street, postalCode, ...userData } = data;
+
+        const address = {
+            country,
+            city,
+            street,
+            postalCode,
+        };
+
+        try {
+            const result = await authServices.register({ ...userData, address });
+
+            setAuth(result);
+
+            navigate('/')
+        } catch (errors) {
+
+            setErrors(Object.values(errors));
+        }
+    }
+
+    const onPublishRideSubmit = async (data) => {
+        const { brand, model, color, licensePlate, ...rideData } = data;
+
+        const car = {
+            brand,
+            model,
+            color,
+            licensePlate,
+        }
+
+        try {
+            const result = await rideServices.publishRide({ ...rideData, car }, authContext.token);
+
+           console.log(result);
+        } catch (createErr) {
+            
+            setErrors(Object.values(createErr))
+        }
+    }
+
+    const authContext = {
         onLoginSubmit,
+        onRegisterSubmit,
+        onPublishRideSubmit,
         errors,
         setErrors,
         userId: auth.id,
@@ -46,15 +91,15 @@ function App() {
     }
 
     return (
-        <AuthContext.Provider value={context}>
+        <AuthContext.Provider value={authContext}>
             <>
                 <Header />
                 <Routes>
                     <Route path='/' element={<Home />} />
                     <Route path='/register' element={<Register />} />
                     <Route path='/login' element={<Login />} />
-                    <Route path='/publish' element={<CreateRide />} />
                     <Route path='/search' element={<SearchRide />} />
+                    <Route path='/publish' element={<CreateRide />} />
                 </Routes>
                 <Footer />
             </>

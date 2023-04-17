@@ -11,15 +11,32 @@
 /* Travel directions */
 
 .travel-directions {
+    display: flex;
+    flex-wrap: wrap;
+    /* justify-content: center; */
+    /* gap: 10px; */
+    align-items: center;
     border: solid 2px grey;
     border-radius: 16px;
     overflow: hidden;
-    padding: 4px 6px;
-    width: 60%;
+    padding: 20px 16px;
+    width: 68%;
+}
+
+.travel-directions .input__fields {
+    margin-right: 18px;
+}
+
+.travel-directions .calculate {
+    margin-right: 20px;
+}
+
+.travel-directions p {
+    margin-right: auto;
 }
 
 .travel-directions .input__fields label {
-    text-align: center;
+    /* text-align: center; */
     display: block;
     margin-bottom: 4px;
 }
@@ -28,19 +45,14 @@
     display: block;
     border-radius: 12px;
     width: 300px;
-    margin: auto;
+    /* margin: auto; */
     margin-bottom: 10px;
-}
-
-.travel-directions button {
-    margin: auto;
-    display: block;
 }
 
 /* Google map */
 
 .googleMap {
-    min-height: 500px;
+    height: 500px;
     width: 90%;
     border: solid 2px grey;
     border-radius: 16px;
@@ -93,6 +105,8 @@
     display: flex;
     flex-wrap: wrap;
     padding-top: 10px;
+    border-bottom: solid 2px grey;
+    padding-bottom: 6px;
 }
 
 .travel-details .more-details p {
@@ -129,4 +143,34 @@
 .travel-details button {
     display: block;
     margin: 0 auto;
+}
+
+/* car details */
+
+.travel-details .car-details {
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 10px;
+    margin-bottom: 20px;
+}
+
+.travel-details .car-details p {
+    flex: 1;
+}
+
+.travel-details .car-details .collection-input {
+    display: flex;
+    flex-wrap: wrap;
+    flex: 2;
+    column-gap: 45px;
+    row-gap: 25px;
+}
+
+.input__fields .error {
+    border-radius: 12px;
+    width: 300px;
+    height: auto;
+    background-color: red;
+    padding-left: 6px;
+    margin-bottom: 2px;
 }

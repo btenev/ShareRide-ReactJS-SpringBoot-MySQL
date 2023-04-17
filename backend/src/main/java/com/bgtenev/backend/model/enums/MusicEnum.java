@@ -1,6 +1,7 @@
 package com.bgtenev.backend.model.enums;
 
 public enum MusicEnum {
+    NONE(""),
     YES("It's all about the playlist!"),
     NO("Silence is golden");
     private final String message;

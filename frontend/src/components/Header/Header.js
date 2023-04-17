@@ -32,11 +32,11 @@ export const Header = () => {
                             <Link to={"/publish"}>Publish a ride</Link>
                         </li>
                     )}
-                    {!isAuthenticated && (
-                        <li className={styles["nav__item"]}>
-                            <Link to={"/search"}>Search for a ride</Link>
-                        </li>
-                    )}
+
+                    <li className={styles["nav__item"]}>
+                        <Link to={"/search"}>Search for a ride</Link>
+                    </li>
+
 
 
                     {/* <li className={styles["nav__item"]}>

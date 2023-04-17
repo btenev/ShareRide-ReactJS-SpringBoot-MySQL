@@ -1,6 +1,7 @@
 package com.bgtenev.backend.config;
 
 import com.bgtenev.backend.model.dto.ErrorDto;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;

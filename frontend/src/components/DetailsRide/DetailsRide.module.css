@@ -1,0 +1,46 @@
+/* Ride details */
+.ride-information {
+    display: flex;
+    border: solid 2px grey;
+    border-radius: 16px;
+    overflow: hidden;
+    width: 80%;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+
+.ride-information .information__details{
+    width: 40%;
+    padding: 8px 10px;
+}
+
+.ride-information .information__details h1 {
+    text-align: center;
+    border-bottom: solid 2px grey;
+    padding-bottom: 4px;
+    margin-bottom: 4px;
+}
+
+.ride-information .information__details h3 {
+    padding-bottom: 4px;
+}
+
+.ride-information .information__details  .information__details__trip {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 180px;
+    margin-bottom: 20px;
+}
+
+.ride-information .information__map {
+    width: 60%;
+    min-height: 500px;
+}
+
+.ride-information .information__details  .information__details__trip.second {
+    column-gap: 220px;
+}
+
+.ride-information .information__details  .information__details__trip.third {
+    column-gap: 94px;
+}

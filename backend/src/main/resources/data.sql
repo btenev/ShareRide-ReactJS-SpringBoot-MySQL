@@ -44,18 +44,18 @@ VALUES (1, 1, 0, 'Plovdiv, Bulgaria', 'SMALL', 'Sofia, Bulgaria', '2022-08-20', 
        (2, 1, 0, 'Varna, Bulgaria', 'LARGE', 'Sofia, Bulgaria', '2022-08-23', '10:30:00', 'Three', 30, 'Sofia Varna trip', 2, 1),
        (3, 1, 0, 'Haskovo, Bulgaria', 'MEDIUM', 'Sofia, Bulgaria', '2022-08-25', '14:30:00', 'Two', 20, 'Sofia Haskovo trip', 1, 1);
 
-# INSERT INTO rides_status(id,approve_ride, join_ride, passenger_id)
-# VALUES (1,0, 1, 2),
-#        (2,0, 1, 3),
-#        (3,0, 1, 4),
-#        (4,0, 1, 5),
-#        (5,0, 0, 6);
-#
-# INSERT INTO rides_requests(ride_entity_id, requests_id)
-# VALUES (1, 1),
-#        (1, 2),
-#        (2, 3),
-#        (2, 4);
+INSERT INTO rides_status(id,approve_ride, join_ride, passenger_id)
+VALUES (1,0, 1, 2),
+       (2,0, 1, 3),
+       (3,0, 1, 4),
+       (4,0, 1, 5),
+       (5,0, 0, 6);
+
+INSERT INTO rides_requests(ride_entity_id, requests_id)
+VALUES (1, 1),
+       (1, 2),
+       (2, 3),
+       (2, 4);
 
 
 

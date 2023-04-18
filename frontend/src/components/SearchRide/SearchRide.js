@@ -1,8 +1,12 @@
-import { useState } from 'react';
 import styles from './SearchRide.module.css';
 
+import { useState } from 'react';
+import * as rideServices from '../../services/rideService';
+import { RideItem } from './RideItem/RideItem';
+
+
 export const SearchRide = () => {
-    const [ values, setValues ] = useState({
+    const [values, setValues] = useState({
         departure: '',
         arrival: '',
         departureDate: '',
@@ -15,17 +19,26 @@ export const SearchRide = () => {
 
     const onSubmit = (e) => {
         e.preventDefault();
+
+        if (values.departure === '' && values.arrival === '') {
+            return;
+        }
+
         onSearchSubmit(values);
     }
 
-    const onSearchSubmit = (data) => {
+    const [travelData, setTravelData] = useState([]);
+
+    const onSearchSubmit = async (data) => {
         try {
-            console.log(data);
+            const result = await rideServices.rideSearch(data);
+
+            setTravelData(result);
         } catch (error) {
             console.log(error)
         }
     }
-
+  
     return (
         <main className={styles["main"]}>
             <section className={styles["search"]}>
@@ -69,57 +82,10 @@ export const SearchRide = () => {
                         </form>
                     </div>
 
-                    <div className={styles["search__details"]}>
-                        <ul role="list">
-                            <li>Date</li>
-                        </ul>
-                        <ul role="list">
-                            <li>Driver name</li>
-                            <li>Departure hour</li>
-                            <li>Arrival hour</li>
-                        </ul>
-                        <ul role="list">
-                            <li>Price</li>
-                            <li>Departure city</li>
-                            <li>Arrival city</li>
-                            <li>Number of available seats</li>
-                        </ul>
-                    </div>
-
-                    <div className={styles["search__details"]}>
-                        <ul role="list">
-                            <li>Date</li>
-                        </ul>
-                        <ul role="list">
-                            <li>Driver name</li>
-                            <li>Departure hour</li>
-                            <li>Arrival hour</li>
-                        </ul>
-                        <ul role="list">
-                            <li>Price</li>
-                            <li>Departure city</li>
-                            <li>Arrival city</li>
-                            <li>Number of available seats</li>
-                        </ul>
-                    </div>
-
-                    <div className={styles["search__details"]}>
-                        <ul role="list">
-                            <li>Date</li>
-                        </ul>
-                        <ul role="list">
-                            <li>Driver name</li>
-                            <li>Departure hour</li>
-                            <li>Arrival hour</li>
-                        </ul>
-                        <ul role="list">
-                            <li>Price</li>
-                            <li>Departure city</li>
-                            <li>Arrival city</li>
-                            <li>Number of available seats</li>
-                        </ul>
-                    </div>
+                    {travelData.map(x => <RideItem key={x.id}  {...x} />)}
+               
                 </div >
+
             </section >
         </main >
     );

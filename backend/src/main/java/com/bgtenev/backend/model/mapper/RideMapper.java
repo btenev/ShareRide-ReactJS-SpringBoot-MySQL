@@ -1,6 +1,6 @@
 package com.bgtenev.backend.model.mapper;
 
-import com.bgtenev.backend.model.dto.RideDetailsDto;
+import com.bgtenev.backend.model.dto.RideSummaryDto;
 import com.bgtenev.backend.model.dto.ride.PublishRideDto;
 import com.bgtenev.backend.model.dto.ride.PublishedRideDto;
 import com.bgtenev.backend.model.entity.RideEntity;
@@ -16,5 +16,5 @@ public interface RideMapper {
 
     PublishedRideDto rideEntityToPublishedRideDto(RideEntity rideEntity);
 
-    RideDetailsDto rideEntityToRideDetailsDto(RideEntity ride);
+    RideSummaryDto rideEntityToRideSummaryDto(RideEntity ride);
 }

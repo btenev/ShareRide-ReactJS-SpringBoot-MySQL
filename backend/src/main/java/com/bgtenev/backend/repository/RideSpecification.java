@@ -8,6 +8,9 @@ import jakarta.persistence.criteria.Predicate;
 import jakarta.persistence.criteria.Root;
 import org.springframework.data.jpa.domain.Specification;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+
 public class RideSpecification implements Specification<RideEntity> {
     private final SearchRideDto searchRideDto;
 
@@ -20,34 +23,40 @@ public class RideSpecification implements Specification<RideEntity> {
                                  CriteriaQuery<?> query,
                                  CriteriaBuilder cb) {
 
-        Predicate p = cb.conjunction();
-//        p.getExpressions().add(cb.and(cb.isTrue(root.get("active"))));
+        Specification<RideEntity> where = Specification.where(null);
 
         if (searchRideDto.getDeparture() != null && !searchRideDto.getDeparture().isEmpty()) {
-            p.getExpressions().add(
-                    cb.and(cb.equal(root.get("departure"), searchRideDto.getDeparture() + ", Bulgaria"))
-            );
+            where = where.and(departureEqualsTo(searchRideDto.getDeparture()));
         }
 
         if (searchRideDto.getArrival() != null && !searchRideDto.getArrival().isEmpty()) {
-            p.getExpressions().add(
-                    cb.and(cb.equal(root.get("arrival"), searchRideDto.getArrival() + ", Bulgaria"))
-            );
+            where = where.and(arrivalEqualsTo(searchRideDto.getArrival()));
         }
 
         if (searchRideDto.getDepartureDate() != null) {
-            p.getExpressions().add(
-                    cb.and(cb.equal(root.get("departureDate"), searchRideDto.getDepartureDate()))
-            );
+            where = where.and(departureDateTo(searchRideDto.getDepartureDate()));
         }
-
 
         if (searchRideDto.getDepartureTime() != null) {
-            p.getExpressions().add(
-                    cb.and(cb.greaterThanOrEqualTo(root.get("departureTime"), searchRideDto.getDepartureTime()))
-            );
+            where = where.and(departureTimeTo(searchRideDto.getDepartureTime()));
         }
 
-        return p;
+        return where.toPredicate(root, query, cb);
+    }
+
+    private static Specification<RideEntity> departureEqualsTo(String departure) {
+        return (r, q, b) -> b.and(b.equal(r.get("departure"), departure + ", Bulgaria"));
+    }
+
+    private static Specification<RideEntity> arrivalEqualsTo(String arrival) {
+        return (r, q, b) -> b.and(b.equal(r.get("arrival"), arrival + ", Bulgaria"));
+    }
+
+    private static Specification<RideEntity> departureDateTo(LocalDate departureDate) {
+        return (r, q, b) -> b.and(b.equal(r.get("departureDate"), departureDate));
+    }
+
+    private static Specification<RideEntity> departureTimeTo(LocalTime departureTime) {
+        return (r, q, b) -> b.and(b.equal(r.get("departureTime"), departureTime));
     }
 }

@@ -32,7 +32,7 @@ public class SecurityConfig {
             .and()
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(HttpMethod.POST, "/users/login", "/users/register").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/rides/search").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/rides/search/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/utility/**").permitAll()
                         .anyRequest().authenticated());
         return http.build();

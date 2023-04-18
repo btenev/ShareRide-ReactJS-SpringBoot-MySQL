@@ -15,6 +15,7 @@ import { Register } from './components/Register/Register';
 import { Login } from './components/Login/Login';
 import { CreateRide } from './components/CreateRide/CreateRide';
 import { SearchRide } from './components/SearchRide/SearchRide';
+import { DetailsRide } from './components/DetailsRide/DetailsRide';
 
 function App() {
     const navigate = useNavigate();
@@ -100,6 +101,7 @@ function App() {
                     <Route path='/login' element={<Login />} />
                     <Route path='/search' element={<SearchRide />} />
                     <Route path='/publish' element={<CreateRide />} />
+                    <Route path='/details/:id' element={<DetailsRide/>} />
                 </Routes>
                 <Footer />
             </>

@@ -1,7 +1,7 @@
 package com.bgtenev.backend.service;
 
 import com.bgtenev.backend.exception.AppException;
-import com.bgtenev.backend.model.dto.RideDetailsDto;
+import com.bgtenev.backend.model.dto.RideSummaryDto;
 import com.bgtenev.backend.model.dto.ride.PublishRideDto;
 import com.bgtenev.backend.model.dto.ride.PublishedRideDto;
 import com.bgtenev.backend.model.dto.ride.SearchRideDto;
@@ -46,11 +46,11 @@ public class RideService {
         return this.rideMapper.rideEntityToPublishedRideDto(newRide);
     }
 
-    public List<RideDetailsDto> searchRide(SearchRideDto searchRideDto) {
+    public List<RideSummaryDto> searchRide(SearchRideDto searchRideDto) {
         return this.rideRepository
                 .findAll((new RideSpecification(searchRideDto)))
                 .stream()
-                .map(this.rideMapper::rideEntityToRideDetailsDto)
+                .map(this.rideMapper::rideEntityToRideSummaryDto)
                 .toList();
     }
 }

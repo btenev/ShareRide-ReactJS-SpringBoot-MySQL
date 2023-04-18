@@ -44,4 +44,14 @@ public class SearchRideDto {
     public void setDepartureTime(LocalTime departureTime) {
         this.departureTime = departureTime;
     }
+
+    @Override
+    public String toString() {
+        return "SearchRideDto{" +
+                "departure='" + departure + '\'' +
+                ", arrival='" + arrival + '\'' +
+                ", departureDate=" + departureDate +
+                ", departureTime=" + departureTime +
+                '}';
+    }
 }

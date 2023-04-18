@@ -1,6 +1,6 @@
 package com.bgtenev.backend.controller;
 
-import com.bgtenev.backend.model.dto.RideDetailsDto;
+import com.bgtenev.backend.model.dto.RideSummaryDto;
 import com.bgtenev.backend.model.dto.ride.PublishRideDto;
 import com.bgtenev.backend.model.dto.ride.PublishedRideDto;
 import com.bgtenev.backend.model.dto.ride.SearchRideDto;
@@ -8,6 +8,7 @@ import com.bgtenev.backend.service.RideService;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
@@ -33,11 +34,20 @@ public class RideController {
         return ResponseEntity.created(URI.create("/rides/publish" + newRide.getId())).body(newRide);
     }
 
-    @GetMapping("/search")
+    @PostMapping("/search")
     @Transactional
-    public ResponseEntity<List<RideDetailsDto>> searchQuery(@RequestBody SearchRideDto searchRideDto) {
-        List<RideDetailsDto> rides = rideService.searchRide(searchRideDto);
+    public ResponseEntity<List<RideSummaryDto>> searchQuery(@Valid @RequestBody SearchRideDto searchRideDto) {
+        System.out.println(searchRideDto.toString());
+        List<RideSummaryDto> rides = rideService.searchRide(searchRideDto);
 
         return ResponseEntity.ok(rides);
     }
+
+//    @GetMapping("/details/{id}")
+//    @Transactional
+//    public String getRide(@PathVariable("id") Long rideId) {
+//        RideDetailsDto rideDetails = this.rideService.getRide(rideId);
+//
+//        return ResponseEntity.ok();
+//    }
 }

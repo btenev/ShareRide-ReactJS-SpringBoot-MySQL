@@ -38,7 +38,7 @@ export const CreateRide = () => {
     const [enums, setEnums] = useState({
         baggageQuantity: [],
         numberOfSeats: [],
-    })
+    });
 
     const [directionsResponse, setDirectionsResponse] = useState(null);
     const [distance, setDistance] = useState('');

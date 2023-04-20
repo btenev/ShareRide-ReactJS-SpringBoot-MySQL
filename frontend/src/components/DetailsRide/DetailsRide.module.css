@@ -4,13 +4,14 @@
     border: solid 2px grey;
     border-radius: 16px;
     overflow: hidden;
-    width: 80%;
+    width: 90%;
     margin: 0 auto;
     margin-bottom: 20px;
+    height: 120vh;
 }
 
 .ride-information .information__details{
-    width: 40%;
+    width: 45%;
     padding: 8px 10px;
 }
 
@@ -33,14 +34,14 @@
 }
 
 .ride-information .information__map {
-    width: 60%;
-    min-height: 500px;
+    width: 55%;
+    height: 600px;
 }
 
 .ride-information .information__details  .information__details__trip.second {
-    column-gap: 220px;
+    column-gap: 180px;
 }
 
 .ride-information .information__details  .information__details__trip.third {
-    column-gap: 94px;
+    column-gap: 80px;
 }

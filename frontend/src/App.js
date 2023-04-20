@@ -71,9 +71,11 @@ function App() {
             const result = await rideServices.publishRide({ ...rideData, car }, authContext.token);
 
            console.log(result);
+           navigate('/')
         } catch (createErr) {
-            
-            setErrors(Object.values(createErr))
+            console.log(createErr["errors"]);
+            setErrors(createErr["errors"])
+            Object.values(createErr)
         }
     }
 

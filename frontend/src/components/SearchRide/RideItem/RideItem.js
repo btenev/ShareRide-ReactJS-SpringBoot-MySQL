@@ -33,7 +33,7 @@ export const RideItem = ({
             </ul>
             <ul role="list">
                 <button>
-                    <Link to={`/rides/details/${id}`}>Details</Link>
+                    <Link to={`/details/${id}`}>Details</Link>
                 </button>
             </ul>
         </div>
